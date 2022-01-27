@@ -1,4 +1,26 @@
 {
+  "name": "homework-8",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest --verbose test/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ireyesleon/homework-8.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ireyesleon/homework-8/issues"
+  },
+  "homepage": "https://github.com/ireyesleon/homework-8#readme",
+  "description": "",
   "dependencies": {
     "inquirer": "^8.2.0",
     "jest": "^27.4.7"

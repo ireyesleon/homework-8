@@ -1,0 +1,32 @@
+header {
+    background-color: #7aaaf1;
+    text-align: center;
+    height: 20vh;
+    margin: 0;
+    margin-bottom: 5vh;
+}
+
+header p {
+    font-size: 5vh;
+    margin: 0;
+    color: white;
+    position: relative;
+    top: 30%;
+}
+
+.card {
+    padding: 0;
+    box-shadow: 5px 10px 10px rgb(150, 148, 148);
+    border-radius: 5px;
+}
+
+.card-title {
+    padding-left: 15px;
+}
+
+.card-body {
+    background-color: #f17ae1;
+    padding: 0;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}

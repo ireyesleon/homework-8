@@ -1,8 +1,12 @@
-const Employee = require("../lib/Employee")
+const Employee = require('../lib/Employee');
+const Manager = require('../lib/Manager');
+const Engineer = require('../lib/Engineer');
+const Intern = require('../lib/Intern');
+const index = require('../index');
 
 const teamBuild = team => {
    const managerHTML = manager => {
-       return `
+     return `
     <div class="card col-sm-12 col-md-6 col-lg-3">
             <div class="card-body">
               <h5 class="card-title">${manager.getName()}</h5>
@@ -11,14 +15,14 @@ const teamBuild = team => {
             <ul class="list-group list-group-flush">
               <li class="list-group-item">ID: ${manager.getID()}</li>
               <li class="list-group-item">Email: <a href = "mailto: ${manager.getEmail()}">${manager.getEmail()}</a></li>
-              <li class="list-group-item">Office number: ${manager.getOffice()}</li>
+              <li class="list-group-item">Office Number: ${manager.getOffice()}</li>
             </ul>
           </div>
           `
     }
 
    const engineerHTML = engineer => {
-    return `
+     return `
     <div class="card col-sm-12 col-md-6 col-lg-3">
             <div class="card-body">
               <h5 class="card-title">${engineer.getName()}</h5>
@@ -26,15 +30,15 @@ const teamBuild = team => {
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">ID: ${engineer.getID()}</li>
-              <li class="list-group-item">Email: <a href = "mailto: ${engineer.getEmail()}">${engieer.getEmail()}</a></li>
-              <li class="list-group-item">Github: ${engineer.getGithub()}</li>
+              <li class="list-group-item">Email: <a href = "mailto: ${engineer.getEmail()}">${engineer.getEmail()}</a></li>
+              <li class="list-group-item">Github: <a href="https://github.com/${engineer.getGithub()}" target="_blank">${engineer.getGithub()}</a></li>
             </ul>
           </div>
           `
    }
 
    const internHTML = intern => {
-    return `
+     return `
     <div class="card col-sm-12 col-md-6 col-lg-3">
             <div class="card-body">
               <h5 class="card-title">${intern.getName()}</h5>
@@ -43,7 +47,7 @@ const teamBuild = team => {
             <ul class="list-group list-group-flush">
               <li class="list-group-item">ID: ${intern.getID()}</li>
               <li class="list-group-item">Email: <a href = "mailto: ${intern.getEmail()}">${intern.getEmail()}</a></li>
-              <li class="list-group-item">School name: ${intern.getSchool()}</li>
+              <li class="list-group-item">School Name: ${intern.getSchool()}</li>
             </ul>
           </div>
           `
@@ -51,32 +55,19 @@ const teamBuild = team => {
 
    const html = [];
    html.push(team
-    .filter(employee => {
-    employee.getRole() === 'Manager'
-   })
-   .map(manager => {
-       managerHTML(manager)
-   }));
+    .filter(employee => employee.getRole() === "Manager")
+   .map(manager => managerHTML(manager)));
 
    html.push(team
-    .filter(employee => {
-    employee.getRole() === 'Engineer'
-   })
-   .map(engineer => {
-       engineerHTML(engineer)
-   }).join('')
-   );
+    .filter(employee => employee.getRole() === "Engineer")
+   .map(engineer => engineerHTML(engineer))
+   .join(''));
 
    html.push(team
-    .filter(employee => {
-    employee.getRole() === 'Intern'
-   })
-   .map(intern => {
-       internHTML(intern)
-   }).join('')
-   );
-
-   return html.join('')
+    .filter(employee => employee.getRole() === "Intern")
+   .map(intern => internHTML(intern))
+   .join(''));
+   return html.join('');
 }
 
 module.exports = team => {

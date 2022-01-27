@@ -16,6 +16,7 @@ header p {
 
 .card {
     padding: 0;
+    margin: 10px;
     box-shadow: 5px 10px 10px rgb(150, 148, 148);
     border-radius: 5px;
 }

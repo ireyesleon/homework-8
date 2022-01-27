@@ -15,9 +15,8 @@ const teamMembers = [];
 
 // inqurer prompt
 // Start questions function, and inside add another function to build the manager
-startQuestion => {
-  buildManager => {
-inquirer
+const buildManager = () => {
+return inquirer
 .prompt([
     {
         type: 'confirm',
@@ -26,31 +25,114 @@ inquirer
     },
     {
         type: 'input',
-        name: 'mgrName',
+        name: 'name',
         message: 'Full name:',
     },
     {
         type: 'input',
-        name: 'mgrId',
+        name: 'id',
         message: 'Employee ID:',
     },
     {
         type: 'input',
-        name: 'mgrEmail',
+        name: 'email',
         message: 'Email:',
     },
     {
         type: 'input',
-        name: 'mgrOffice',
+        name: 'office',
         message: 'Office Number:',
+    }
+  ])
+  .then(data => {
+    const manager = new Manager(data.name, data.id, data.email, data.office);
+    teamMembers.push(manager);
+    startQuestions();
+  })
+};
+
+const startQuestions = () => {
+  return inquirer
+  .prompt([
+    {
+      type: 'list',
+      name: 'role',
+      message: 'Do you want to add another member?',
+      choices: ['Engineer', 'Intern', 'Finish building my team']
+  }])
+  .then(employeeSelection => {
+    switch (employeeSelection.role) {
+      case "Engineer": engineerQuestions();
+      break;
+      case "Intern": internQuestions();
+      break;
+      default:
+        makeTeam();
+    }
+  });
+};
+
+const engineerQuestions = () =>{
+  return inquirer
+.prompt([
+    {
+        type: 'input',
+        name: 'name',
+        message: 'Full name:',
     },
     {
-        type: 'list',
-        name: 'role',
-        message: 'Do you want to add another member?',
-        choices: ['Engineer', 'Intern', 'Finish']
+        type: 'input',
+        name: 'id',
+        message: 'Employee ID:',
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'Email:',
+    },
+    {
+        type: 'input',
+        name: 'github',
+        message: 'Github Username:',
     }
-  ])}
+  ])
+  .then(data => {
+    const engineer = new Engineer(data.name, data.id, data.email, data.github);
+    teamMembers.push(engineer);
+    startQuestions();
+  })
+};
+
+const internQuestions = () => {
+  return inquirer
+  .prompt([
+      {
+          type: 'input',
+          name: 'name',
+          message: 'Full name:',
+      },
+      {
+          type: 'input',
+          name: 'id',
+          message: 'Employee ID:',
+      },
+      {
+          type: 'input',
+          name: 'email',
+          message: 'Email:',
+      },
+      {
+          type: 'input',
+          name: 'school',
+          message: 'School:',
+      }
+    ])
+    .then(data => {
+      const intern = new Intern(data.name, data.id, data.email, data.shool);
+      teamMembers.push(intern);
+      startQuestions();
+    })
+  };
   // Add function to build team
   // First question should be the role
 // Function for the team, which role do you want to add?
@@ -71,6 +153,5 @@ inquirer
     }
     fs.writeFileSync(resultPath, render(teamMembers), 'utf-8')
   }
-  buildManager();
 }
-startQuestion();
+buildManager();

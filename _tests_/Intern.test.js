@@ -21,7 +21,7 @@ test("Can getEmail()", () => {
     expect(e.getEmail()).toBe(email)
 });
 
-test("Can getOffice()", () => {
+test("Can getSchool()", () => {
     const school = "MIT";
 
     const e = new Intern("Fozzie", "123", "fozzie@gmail.com", school);

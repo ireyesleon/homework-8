@@ -26,7 +26,7 @@ const teamBuild = team => {
     <div class="card col-sm-12 col-md-6 col-lg-3">
             <div class="card-body">
               <h5 class="card-title">${engineer.getName()}</h5>
-              <h5 class="card-title bi bi-people-fill"> ${engineer.getRole()}</h5>
+              <h5 class="card-title bi bi-laptop-fill"> ${engineer.getRole()}</h5>
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">ID: ${engineer.getID()}</li>
@@ -42,7 +42,7 @@ const teamBuild = team => {
     <div class="card col-sm-12 col-md-6 col-lg-3">
             <div class="card-body">
               <h5 class="card-title">${intern.getName()}</h5>
-              <h5 class="card-title bi bi-people-fill"> ${intern.getRole()}</h5>
+              <h5 class="card-title bi bi-book"> ${intern.getRole()}</h5>
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">ID: ${intern.getID()}</li>
